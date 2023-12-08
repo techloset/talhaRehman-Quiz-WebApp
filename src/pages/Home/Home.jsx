@@ -20,7 +20,7 @@ const Home = () => {
                 </div>
                 <div>
                     <form id="form">
-                        <input ref={inputRef} className="p-3 " type="text" placeholder='Username*' />
+                        <input ref={inputRef} className="p-3 w-96 " type="text" placeholder='Username*' />
                     </form>
                 </div>
                 <div>
