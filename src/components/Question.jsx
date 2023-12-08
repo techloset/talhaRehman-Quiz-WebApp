@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import data from './data';
 
 const Question = () => {
 
     const [checked ,setChecked] = useState(undefined);
+
+    const question = data[0]
+    useEffect(()=>{
+        console.log(question);
+    })
 
     function onSelectRadio(){
         setChecked()
@@ -22,6 +28,8 @@ const Question = () => {
                 name='options'
                 id='q1-option'
                 onChange={onSelectRadio}/>
+                <label htmlFor="q1-option"></label>
+                <div className='check'></div>
             </li>
         </ul>
     </div>

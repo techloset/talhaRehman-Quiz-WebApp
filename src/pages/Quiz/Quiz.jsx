@@ -4,10 +4,10 @@ import Question from '../../components/Question'
 
 const Quiz = () => {
     function onNext(){
-        console.log("Next")
+        console.log("Next key pressed")
     };
     function onPrev(){
-        console.log("Prev")
+        console.log("Prev key pressed")
     };
     return (
         <>
