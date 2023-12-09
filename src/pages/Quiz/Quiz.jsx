@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from "react-router-dom"
 import Question from '../../components/Question'
+import { useSelector } from 'react-redux'
 
 const Quiz = () => {
+
+ const {questions} = useSelector(state => state)
+
+ useEffect(()=>{
+    console.log(questions.queue)
+ })
+
     function onNext(){
         console.log("Next key pressed")
     };

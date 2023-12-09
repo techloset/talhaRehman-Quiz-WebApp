@@ -2,6 +2,7 @@ import './App.css';
 import {createBrowserRouter,Route, RouterProvider} from "react-router-dom"
 import Home from './pages/Home/Home';
 import Quiz from './pages/Quiz/Quiz';
+import Result from './pages/Result/Result';
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path : '/result',
-    element: <div>Result Element</div>
+    element: <Result/>
   }
 ])
 
