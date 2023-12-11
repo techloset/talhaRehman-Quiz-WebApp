@@ -10,6 +10,11 @@ const Quiz = () => {
  useEffect(()=>{
     console.log(questions.queue)
  })
+ const state = useSelector(state => state)
+
+ useEffect(()=>{
+    console.log(state)
+ })
 
     function onNext(){
         console.log("Next key pressed")
