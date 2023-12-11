@@ -1,23 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import data from './data';
+import { useFetchQuestion } from '../hooks/FetchQuestion';
+import { useSelector } from 'react-redux';
 
 const Question = () => {
 
     const [checked, setChecked] = useState(undefined);
-
+    const [isLoading, apiData, serverError , ] = useFetchQuestion();
     const question = data[0];
+    const  questions = useSelector(state => state.questions.queue)
+
+    useEffect(()=>{
+       console.log(questions.queue)
+    })
 
     useEffect(() => {
-        
+        console.log(isLoading);
+        // console.log(apiData);
+        // console.log(serverError);
     })
 
     function onSelectRadio() {
         setChecked()
         console.log("onSelectRadio")
     };
+
+    // if(isLoading) return <h3 className='text-white mt-20 text-3xl mb-20 ' >Loading...</h3>
+    // if(serverError) return <h3 className='text-white '>{serverError || "Unknow error"}</h3>
     return (
         <>
-            <div className='flex flex-col w-[100%] '>
+            <div className='flex flex-col w-[79%] '>
                 <h2 className='text-white text-2xl mx-auto mt-10'>{`Question ${question.id}`}</h2>
                 <div className='mx-16'>
                     <h2 className='text-white mt-3'>{question.question}</h2>

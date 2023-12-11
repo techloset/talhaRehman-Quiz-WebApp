@@ -8,12 +8,12 @@ const Quiz = () => {
  const {questions} = useSelector(state => state)
 
  useEffect(()=>{
-    console.log(questions.queue)
+    // console.log(questions.queue)
  })
  const state = useSelector(state => state)
 
  useEffect(()=>{
-    console.log(state)
+    // console.log(state)
  })
 
     function onNext(){
@@ -29,7 +29,7 @@ const Quiz = () => {
                     <h1 className='text-2xl text-white'>Quiz Web App</h1>
                 </div>
                 <Question/>
-                <div className='flex justify-between w-[40%] mt-8 '>
+                <div className='flex justify-between w-[70%] mt-8 '>
                     <button className='text-white bg-yellow-400 p-2 w-20 rounded-lg' onClick={onPrev}>Prev</button>
                     <button className='text-white bg-green-600 p-2 w-20 rounded-lg'onClick={onNext}>Next</button>
                 </div>
