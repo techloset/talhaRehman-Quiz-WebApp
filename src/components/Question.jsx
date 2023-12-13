@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import data from './data';
 import { useFetchQuestion } from '../hooks/FetchQuestion';
 import { useSelector } from 'react-redux';
 
@@ -7,16 +6,15 @@ const Question = () => {
 
     const [checked, setChecked] = useState(undefined);
     const [isLoading, apiData, serverError , ] = useFetchQuestion();
-    const question = data[0];
-    const  questions = useSelector(state => state.questions.queue)
+    const questions = useSelector(state => state.questions.queue[state.questions.trace])
 
     useEffect(()=>{
-       console.log(questions.queue)
+       console.log(questions)
     })
 
     useEffect(() => {
         console.log(isLoading);
-        // console.log(apiData);
+        console.log(apiData);
         // console.log(serverError);
     })
 
@@ -30,12 +28,12 @@ const Question = () => {
     return (
         <>
             <div className='flex flex-col w-[79%] '>
-                <h2 className='text-white text-2xl mx-auto mt-10'>{`Question ${question.id}`}</h2>
+                <h2 className='text-white text-2xl mx-auto mt-10'>{`Question ${questions?.id}`}</h2>
                 <div className='mx-16'>
-                    <h2 className='text-white mt-3'>{question.question}</h2>
-                    <ul className='mt-5' key={question.id}>
+                    <h2 className='text-white mt-3'>{questions?.question}</h2>
+                    <ul className='mt-5' key={questions?.id}>
                         {
-                            question.options.map((q, i) => (
+                            questions?.options.map((q, i) => (
                                 <li className='flex gap-3 mt-3 items-center' key={i}>
                                     <input
                                         type='radio'
