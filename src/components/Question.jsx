@@ -30,18 +30,19 @@ const Question = () => {
             <div className='flex flex-col w-[79%] '>
                 <h2 className='text-white text-2xl mx-auto mt-10'>{`Question ${questions?.id}`}</h2>
                 <div className='mx-16'>
-                    <h2 className='text-white mt-3'>{questions?.question}</h2>
+                    <h2 className='text-white mt-7'>{questions?.question}</h2>
                     <ul className='mt-5' key={questions?.id}>
                         {
                             questions?.options.map((q, i) => (
-                                <li className='flex gap-3 mt-3 items-center' key={i}>
+                                <li className='flex  mt-5 items-center justify-left' key={i}>
                                     <input
                                         type='radio'
                                         value={true}
                                         name='options'
+                                        className='mt-1'
                                         id={`q${i}-question`}
                                         onChange={onSelectRadio} />
-                                    <label htmlFor={`q${i}-question`} className='text-white'>{q}</label>
+                                    <label htmlFor={`q${i}-question`} className='text-white pl-2'>{q}</label>
                                     <div className='check checked'></div>
                                 </li>
                             ))
