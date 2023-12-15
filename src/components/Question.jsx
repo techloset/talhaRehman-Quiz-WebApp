@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import { useFetchQuestion } from '../hooks/FetchQuestion';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateResultAction } from '../redux/result_reducer';
 
-const Question = () => {
+const Question = ({onChecked}) => {
 
     const [checked, setChecked] = useState(undefined);
     const [isLoading, apiData, serverError , ] = useFetchQuestion();
     const questions = useSelector(state => state.questions.queue[state.questions.trace])
-
+    const dispatch = useDispatch();
+    const {trace} = useSelector(state => state.questions)
     useEffect(()=>{
-       console.log(questions)
+     dispatch(updateResultAction({trace, checked}))
     })
 
     useEffect(() => {
-        console.log(isLoading);
-        console.log(apiData);
+        // console.log(isLoading);
+        // console.log(apiData);
         // console.log(serverError);
     })
 
-    function onSelectRadio() {
+    function onSelectRadio(i) {
         setChecked()
         console.log("onSelectRadio")
+        console.log(i);
+        onChecked(i);
     };
 
     // if(isLoading) return <h3 className='text-white mt-20 text-3xl mb-20 ' >Loading...</h3>
@@ -41,7 +45,7 @@ const Question = () => {
                                         name='options'
                                         className='mt-1'
                                         id={`q${i}-question`}
-                                        onChange={onSelectRadio} />
+                                        onChange={()=> onSelectRadio(i)} />
                                     <label htmlFor={`q${i}-question`} className='text-white pl-2'>{q}</label>
                                     <div className='check checked'></div>
                                 </li>
