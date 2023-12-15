@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useFetchQuestion } from '../hooks/FetchQuestion';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateResultAction } from '../redux/result_reducer';
+import { updateResult } from '../hooks/setResult';
+
 
 const Question = ({onChecked}) => {
 
@@ -10,25 +11,20 @@ const Question = ({onChecked}) => {
     const questions = useSelector(state => state.questions.queue[state.questions.trace])
     const dispatch = useDispatch();
     const {trace} = useSelector(state => state.questions)
+    const result = useSelector(state => state.result.result);
+   
     useEffect(()=>{
-     dispatch(updateResultAction({trace, checked}))
-    })
+     dispatch(updateResult({trace, checked}))
+    }, [checked])
 
-    useEffect(() => {
-        // console.log(isLoading);
-        // console.log(apiData);
-        // console.log(serverError);
-    })
 
     function onSelectRadio(i) {
-        setChecked()
-        console.log("onSelectRadio")
-        console.log(i);
+        setChecked(i)
         onChecked(i);
+        dispatch(updateResult({ trace, checked}))
     };
 
-    // if(isLoading) return <h3 className='text-white mt-20 text-3xl mb-20 ' >Loading...</h3>
-    // if(serverError) return <h3 className='text-white '>{serverError || "Unknow error"}</h3>
+
     return (
         <>
             <div className='flex flex-col w-[79%] '>
@@ -47,7 +43,7 @@ const Question = ({onChecked}) => {
                                         id={`q${i}-question`}
                                         onChange={()=> onSelectRadio(i)} />
                                     <label htmlFor={`q${i}-question`} className='text-white pl-2'>{q}</label>
-                                    <div className='check checked'></div>
+                                    <div className={`check ${result[trace] == i ? 'checked' : ''}`}></div>
                                 </li>
                             ))
                         }

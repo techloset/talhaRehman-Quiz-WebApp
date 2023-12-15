@@ -14,14 +14,14 @@ const Result = () => {
   };
   return (
     <>
-      <div className='flex justify-center'>
+      <div className='flex justify-center mt-20'>
 
         <div className='border-[4px] border-[#0DFF92] p-5 w-[40%] flex justify-center'>
           <h1 className='text-2xl text-white'>Quiz Web App</h1>
         </div>
       </div>
-      <div className='w-[80%] mx-auto mt-8'>
-        <div className='flex justify-between mx-5 gap-3 text-white'>
+      <div className='w-[80%] mx-auto mt-8 '>
+        <div className='flex justify-between mx-5 gap-5 text-white'>
            <span>Username</span>
            <span className='font-semibold'>Talha</span>
         </div>
@@ -46,8 +46,8 @@ const Result = () => {
            <span>Pass</span>
         </div>
       </div>
-      <div className='bg-[#faff5a] flex justify-center mt-5 w-[20%] mx-auto py-2 rounded-xl'>
-        <Link className='text-black font-bold text-2xl ' to={'/'} onClick={onRestart}> Restart</Link>
+      <div className='bg-[#faff5a] flex mt-5 w-[20%] mx-auto rounded-xl'>
+        <Link className='text-black font-bold block w-full text-center text-2xl  mx-auto py-2' to={'/'} onClick={onRestart}> Restart</Link>
       </div>
       <ResultTable/>
     </>

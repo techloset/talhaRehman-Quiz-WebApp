@@ -49,13 +49,14 @@ const Quiz = () => {
 
     return (
         <>
-            <div className='flex flex-col justify-center items-center mt-16'>
+            <div className='flex flex-col justify-center items-center mt-20'>
                 <div className=' border-[4px] border-[#0DFF92] p-5 w-[40%] flex justify-center'>
                     <h1 className='text-2xl text-white'>Quiz Web App</h1>
                 </div>
                 <Question onChecked={onChecked} />
-                <div className='flex justify-between w-[70%] mt-10 '>
-                    <button className='text-white bg-yellow-400 p-2 w-20 rounded-lg' onClick={onPrev}>Prev</button>
+                <div className={`flex  w-[70%] mt-10 ${trace > 0 ? "justify-between" : "justify-end"}`} >
+                    { trace > 0 ? <button className='text-white bg-yellow-400 p-2 w-20 rounded-lg' onClick={onPrev}>Prev</button> : <></>}
+                    
                     <button className='text-white bg-green-600 p-2 w-20 rounded-lg' onClick={onNext}>Next</button>
                 </div>
             </div>
