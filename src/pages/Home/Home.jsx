@@ -1,8 +1,19 @@
 import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { setUserId } from '../../redux/result_reducer'
+import { useDispatch } from 'react-redux'
 
 const Home = () => {
+    
     const inputRef = useRef(null)
+    const dispatch = useDispatch()
+
+
+    function startQuiz(){
+        if(inputRef.current?.value){
+            dispatch(setUserId(inputRef.current?.value))
+        }
+    }
     return (
         <>
             <div className='flex flex-col justify-center items-center gap-7 mt-20'>
@@ -25,7 +36,7 @@ const Home = () => {
                 </div>
                 <div>
                     <div className='start bg-[#faff5a] py-2 rounded-lg'>
-                        <Link className='btn text-[#202020] p-6 ' to={'quiz'} >Start Quiz</Link>
+                        <Link className='btn text-[#202020] p-6 ' to={'quiz'} onClick={startQuiz} >Start Quiz</Link>
                     </div>
                 </div>
             </div>

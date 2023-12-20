@@ -12,7 +12,8 @@ export const questionReducer = createSlice({
             let { question, answers} = action.payload
             return{
                 ...state,
-                queue : action.payload
+                queue : question,
+                answers
             }
         },
         moveNextAction: (state) => {
